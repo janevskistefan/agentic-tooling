@@ -1,0 +1,82 @@
+# ==========================================
+# .ignore - Optimized for Java/Spring + React
+# ==========================================
+
+# --- Absolute Token Killers & Lockfiles ---
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+gradle.lockfile
+
+# --- Java / Spring Boot ---
+# Build outputs (Prevents the LLM from reading compiled duplicates of your source code)
+target/
+build/
+out/
+bin/
+
+# Compiled & Binary files (Unreadable by LLMs, massive token waste)
+*.class
+*.jar
+*.war
+*.ear
+gradle-wrapper.jar
+*.jfr
+*.hprof
+
+# IDE & Config files (Low reasoning value)
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# --- React / Frontend ---
+# Dependencies
+node_modules/
+
+# Frontend Build outputs
+dist/
+.next/
+
+# Bundled, Minified & Source Maps
+*.min.js
+*.min.css
+*.map
+*.bundle.js
+
+# Media & SVGs (SVG vector math and image binaries are useless to the RAG)
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.webp
+public/assets/
+
+# --- General / Data / Logs ---
+# Test coverage reports
+coverage/
+.nyc_output/
+jacoco/
+
+# Logs
+*.log
+logs/
+
+# Large Data & Database Dumps
+*.sqlite
+*.csv
+*.tsv
+*.dump
+*.bak
+# Note: Uncomment *.sql if your migrations are massive, otherwise keep them visible so the LLM understands your schema.
+# *.sql 
+
+# Environment & OS (Prevents secrets from entering the RAG context)
+.DS_Store
+Thumbs.db
+.env
+.env.*

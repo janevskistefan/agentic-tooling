@@ -1,0 +1,42 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "plan": { 
+      "model": "deepseek/deepseek-reasoner", 
+      "tools": {
+        "context7": true,
+        "local-rag": true
+      }
+    },
+    "build": { 
+      "model": "deepseek/deepseek-chat", 
+      "tools": {
+        "bash": true,
+        "write": true,
+        "edit": true,
+        "context7": true,
+        "pare-dev": true
+      }
+    }
+  },
+  "compaction": { 
+    "auto": true, 
+    "max_tokens": 32000
+  },
+  "mcp": {
+    "context7": {
+      "type": "local",
+      "command": ["npx", "-y", "@context7/mcp-server"],
+      "environment": { "CONTEXT7_PROJECT_ROOT": "." }
+    },
+    "pare-dev": { 
+      "type": "local", 
+      "command": ["npx", "-y", "@paretools/lint"] 
+    },
+    "local-rag": {
+      "type": "local",
+      "command": ["npx", "-y", "mcp-local-rag"],
+      "environment": { "BASE_DIR": "." }
+    }
+  }
+}
